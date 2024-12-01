@@ -1,5 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://m1pnrvi1nik7"]
 
+<<<<<<< HEAD
+=======
+[ext_resource type="Script" path="res://game/scripts/lilBoy.gd" id="1_sg887"]
+>>>>>>> 51ae65e6117aa32ba3d8ce04cdd593a6343b3a7f
 [ext_resource type="Texture2D" uid="uid://setvj767ovxe" path="res://assets/Player.png" id="2_1ki4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tx1y"]
