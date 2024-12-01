@@ -18,7 +18,7 @@ texture = ExtResource("1_l2kkd")
 
 [sub_resource type="TileSet" id="TileSet_gmfak"]
 uv_clipping = true
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_kvgp7")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tx1y"]
@@ -56,6 +56,7 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 0, 0, 3, 0, 0, 4, 
 
 [node name="lilBoy" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(11, -11)
+collision_mask = 10
 script = ExtResource("2_0pcty")
 
 [node name="Camera2D" type="Camera2D" parent="lilBoy"]

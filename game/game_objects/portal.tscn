@@ -83,6 +83,7 @@ animations = [{
 script = ExtResource("1_e2g0q")
 
 [node name="entry" type="Area2D" parent="."]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="entry"]
 shape = SubResource("RectangleShape2D_iedex")
@@ -95,6 +96,7 @@ flip_v = true
 
 [node name="exit" type="Area2D" parent="."]
 position = Vector2(80, 0)
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exit"]
 shape = SubResource("RectangleShape2D_iedex")

@@ -47,6 +47,13 @@ retrieve_portal={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="GroundWorld"
+2d_physics/layer_3="BackgoundWorldLayer"
+2d_physics/layer_4="Portals"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
