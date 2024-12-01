@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=3 uid="uid://c32ximhtl07tv"]
+[gd_scene load_steps=6 format=3 uid="uid://m1pnrvi1nik7"]
 
-[ext_resource type="Script" path="res://game/scenes/lilBoy.gd" id="1_sg887"]
 [ext_resource type="Texture2D" uid="uid://setvj767ovxe" path="res://assets/Player.png" id="2_1ki4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tx1y"]
@@ -31,7 +30,6 @@ animations = [{
 [node name="lilBoy" type="CharacterBody2D" groups=["player"]]
 position = Vector2(11, -11)
 collision_mask = 10
-script = ExtResource("1_sg887")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, 50)

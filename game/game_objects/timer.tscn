@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://myacm2i3nyvt"]
+
+[ext_resource type="Script" path="res://game/scripts/SpeedrunTimer.gd" id="1_rg55l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cecim"]
+font_size = 24
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Hello"
+label_settings = SubResource("LabelSettings_cecim")
+script = ExtResource("1_rg55l")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh27wgc0n5rfp"]
+[gd_scene load_steps=3 format=3 uid="uid://bh27wgc0n5rfp"]
 
+[ext_resource type="Script" path="res://menus/scripts/splash.gd" id="1_1ivbx"]
 [ext_resource type="Texture2D" uid="uid://cwy5qajlddemj" path="res://assets/splash.png" id="1_6565g"]
 
 [node name="Control" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1ivbx")
 
 [node name="Splash" type="Sprite2D" parent="."]
 position = Vector2(338, 256)
@@ -21,14 +23,17 @@ offset_top = 430.0
 offset_right = 779.0
 offset_bottom = 531.0
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "PLAY"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "QUIT"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "OPTIONS"
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
