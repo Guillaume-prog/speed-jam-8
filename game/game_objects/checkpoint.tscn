@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://chrwqutqu3kyi"]
 
 [ext_resource type="Texture2D" uid="uid://ciyglhxxedh1j" path="res://assets/checkpoint_portal.png" id="1_1l8l3"]
-[ext_resource type="Script" path="res://game/game_objects/checkpoint.gd" id="1_4iqxx"]
+[ext_resource type="Script" path="res://game/scripts/checkpoint.gd" id="1_4iqxx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jco0k"]
 atlas = ExtResource("1_1l8l3")
