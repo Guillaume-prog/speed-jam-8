@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://chrwqutqu3kyi"]
 
 [ext_resource type="Texture2D" uid="uid://ciyglhxxedh1j" path="res://assets/checkpoint_portal.png" id="1_1l8l3"]
-[ext_resource type="Script" path="res://game/scripts/checkpoint.gd" id="1_4iqxx"]
+[ext_resource type="Script" path="res://game/scripts/checkpoint.gd" id="1_l01hr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jco0k"]
 atlas = ExtResource("1_1l8l3")
@@ -58,7 +58,7 @@ radius = 2.0
 height = 12.0
 
 [node name="checkpoint" type="StaticBody2D"]
-script = ExtResource("1_4iqxx")
+script = ExtResource("1_l01hr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c4wu2")

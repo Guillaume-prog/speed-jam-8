@@ -4,6 +4,8 @@ extends CharacterBody2D
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 
+const OUT_WALL_SPEED = 0.5
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -11,7 +13,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var _animated_sprite = $AnimSpriteLilBoy
 #var direction
-var portal
+var portal:Portal
+
+var is_stuck_in_wall=false
+
 
 
 
@@ -36,6 +41,16 @@ func _physics_process(delta):
 
 	move_and_slide()
 	
+	#prevent inside wall teleportation
+	if is_on_wall() and not is_on_floor():
+		is_stuck_in_wall = true
+		position-=Vector2(0,OUT_WALL_SPEED)
+	# TODO: add damage and healing ?
+	else:
+		is_stuck_in_wall = false
+	
+	print("stuck "+str(is_stuck_in_wall))
+	
 func _process(delta):
 	_animated_sprite.play("idle")
 	
@@ -49,3 +64,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("retrieve_portal"):
 		if portal != null:
 			portal.queue_free()
+
+
+

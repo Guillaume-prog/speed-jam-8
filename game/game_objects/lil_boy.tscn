@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://m1pnrvi1nik7"]
+[gd_scene load_steps=8 format=3 uid="uid://c32ximhtl07tv"]
 
-<<<<<<< HEAD
-=======
-[ext_resource type="Script" path="res://game/scripts/lilBoy.gd" id="1_sg887"]
->>>>>>> 51ae65e6117aa32ba3d8ce04cdd593a6343b3a7f
+[ext_resource type="Script" path="res://game/scripts/lilBoy.gd" id="1_maqm0"]
 [ext_resource type="Texture2D" uid="uid://setvj767ovxe" path="res://assets/Player.png" id="2_1ki4u"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tx1y"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpsjj"]
 size = Vector2(10, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5o7uu"]
@@ -31,20 +28,32 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcd0q"]
+size = Vector2(4, 4)
+
 [node name="lilBoy" type="CharacterBody2D" groups=["player"]]
 position = Vector2(11, -11)
 collision_mask = 10
+script = ExtResource("1_maqm0")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, 50)
 zoom = Vector2(3, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_1tx1y")
+shape = SubResource("RectangleShape2D_rpsjj")
 
 [node name="AnimSpriteLilBoy" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rark2")
 animation = &"idle"
 frame_progress = 0.232146
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_kcd0q")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_collide_in_wall"]
