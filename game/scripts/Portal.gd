@@ -23,6 +23,8 @@ func _ready():
 	teleport_vector = exit.global_position - entry.global_position
 	$entry/entrySprite.play("warping")
 	$exit/exitSprite.play("warping")
+	for n in $trail.get_child_count()-1 :
+		$trail.get_child(n).play("warping_trail")
 	is_portal_active = true
 
 
