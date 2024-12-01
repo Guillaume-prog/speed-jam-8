@@ -1,11 +1,11 @@
 class_name Portal
 extends Node2D
 
-const _portal_scene: PackedScene = preload("res://assets/portal.tscn")
+const _portal_scene: PackedScene = preload("res://game/game_objects/portal.tscn")
 const portal_cooldown: float = 0.1
-const portal_offset: float = 20
-const portal_distance:float = 200
-const _characterCenterOffset: Vector2 = Vector2(0.0,-19.0)
+const portal_offset: float = 11
+const portal_distance:float = 75
+const _characterCenterOffset: Vector2 = Vector2(0.0,-1.0)
 
 
 var is_portal_active: bool = false
@@ -21,6 +21,10 @@ func _ready():
 	exit.position = Vector2(portal_distance,0)
 	# calculate the vector to apply character to travel through portal
 	teleport_vector = exit.global_position - entry.global_position
+	$entry/entrySprite.play("warping")
+	$exit/exitSprite.play("warping")
+	for n in $trail.get_child_count()-1 :
+		$trail.get_child(n).play("warping_trail")
 	is_portal_active = true
 
 

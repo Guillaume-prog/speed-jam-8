@@ -1,43 +1,143 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfihiikebo74m"]
+[gd_scene load_steps=15 format=3 uid="uid://cfihiikebo74m"]
 
 [ext_resource type="Script" path="res://game/scripts/Portal.gd" id="1_e2g0q"]
+[ext_resource type="Texture2D" uid="uid://ngnv668cs60v" path="res://assets/Portal.png" id="2_s513p"]
+[ext_resource type="Texture2D" uid="uid://d3twujqw8kpue" path="res://assets/Portal-trail.png" id="3_df3dt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1s6w"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iedex"]
+size = Vector2(3, 16)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_dvnu8"]
-frequency = 0.663
-fractal_octaves = 6
+[sub_resource type="AtlasTexture" id="AtlasTexture_olnhy"]
+atlas = ExtResource("2_s513p")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bytka"]
-noise = SubResource("FastNoiseLite_dvnu8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pubg"]
+atlas = ExtResource("2_s513p")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwu4g"]
+atlas = ExtResource("2_s513p")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rquvb"]
+atlas = ExtResource("2_s513p")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i1j23"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olnhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pubg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwu4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rquvb")
+}],
+"loop": true,
+"name": &"warping",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gna8l"]
+atlas = ExtResource("3_df3dt")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4idp2"]
+atlas = ExtResource("3_df3dt")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_engbp"]
+atlas = ExtResource("3_df3dt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv30t"]
+atlas = ExtResource("3_df3dt")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pq2ev"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gna8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4idp2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_engbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pv30t")
+}],
+"loop": true,
+"name": &"warping_trail",
+"speed": 10.0
+}]
 
 [node name="Portal" type="Node2D"]
 script = ExtResource("1_e2g0q")
 
 [node name="entry" type="Area2D" parent="."]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="entry"]
-scale = Vector2(0.25, 2.5)
-shape = SubResource("RectangleShape2D_q1s6w")
+shape = SubResource("RectangleShape2D_iedex")
 
-[node name="Polygon2D" type="Polygon2D" parent="entry"]
-scale = Vector2(2.5, 2.5)
-color = Color(0.129412, 0.721569, 0.721569, 1)
-texture = SubResource("NoiseTexture2D_bytka")
-polygon = PackedVector2Array(-5.2, -10, 5.2, -10, 5.2, 10, -5.2, 10)
+[node name="entrySprite" type="AnimatedSprite2D" parent="entry"]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_i1j23")
+animation = &"warping"
+flip_v = true
 
 [node name="exit" type="Area2D" parent="."]
-position = Vector2(200, 0)
+position = Vector2(80, 0)
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="exit"]
-scale = Vector2(0.25, 2.5)
-shape = SubResource("RectangleShape2D_q1s6w")
+shape = SubResource("RectangleShape2D_iedex")
 
-[node name="Polygon2D" type="Polygon2D" parent="exit"]
-scale = Vector2(2.5, 2.5)
-color = Color(0.129412, 0.721569, 0.721569, 1)
-texture = SubResource("NoiseTexture2D_bytka")
-polygon = PackedVector2Array(-5.2, -10, 5.2, -10, 5.2, 10, -5.2, 10)
+[node name="exitSprite" type="AnimatedSprite2D" parent="exit"]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_i1j23")
+animation = &"warping"
+
+[node name="trail" type="Node2D" parent="."]
+position = Vector2(16, 0)
+
+[node name="trailsprite1" type="AnimatedSprite2D" parent="trail"]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_pq2ev")
+animation = &"warping_trail"
+frame = 1
+frame_progress = 0.174019
+
+[node name="trailsprite2" type="AnimatedSprite2D" parent="trail"]
+position = Vector2(16, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_pq2ev")
+animation = &"warping_trail"
+frame = 3
+frame_progress = 0.224398
+
+[node name="trailsprite3" type="AnimatedSprite2D" parent="trail"]
+position = Vector2(32, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_pq2ev")
+animation = &"warping_trail"
+frame_progress = 0.870207
+
+[node name="trailsprite4" type="AnimatedSprite2D" parent="trail"]
+position = Vector2(48, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_pq2ev")
+animation = &"warping_trail"
+frame = 3
+frame_progress = 0.618479
 
 [connection signal="body_entered" from="entry" to="." method="_body_entered_portal"]
 [connection signal="body_entered" from="exit" to="." method="_body_entered_portal"]
