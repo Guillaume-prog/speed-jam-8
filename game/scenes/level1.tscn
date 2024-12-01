@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dv5ne3fhcfmpq"]
+[gd_scene load_steps=6 format=3 uid="uid://dv5ne3fhcfmpq"]
 
 [ext_resource type="Texture2D" uid="uid://bii2hfocdvykg" path="res://assets/groundtest.png" id="1_l2kkd"]
-[ext_resource type="Script" path="res://game/scenes/lilBoy.gd" id="2_0pcty"]
-[ext_resource type="Texture2D" uid="uid://setvj767ovxe" path="res://assets/Player.png" id="2_ovfvk"]
+[ext_resource type="PackedScene" uid="uid://c32ximhtl07tv" path="res://game/game_objects/lil_boy.tscn" id="2_853je"]
+[ext_resource type="PackedScene" uid="uid://chrwqutqu3kyi" path="res://game/game_objects/checkpoint.tscn" id="3_ygxig"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvgp7"]
 resource_name = "groundtest"
@@ -21,53 +21,14 @@ uv_clipping = true
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_kvgp7")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tx1y"]
-size = Vector2(10, 15)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5o7uu"]
-atlas = ExtResource("2_ovfvk")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6yctw"]
-atlas = ExtResource("2_ovfvk")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_rark2"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5o7uu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6yctw")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
 [node name="Level1" type="Node2D"]
 
 [node name="Map" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_gmfak")
-collision_animatable = true
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 0, 0, 3, 0, 0, 4, 65536, 0, 5, 65536, 0, 6, 65536, 0, 7, 0, 0, 8, 65536, 0, 9, 65536, 0, 10, 65536, 0, 11, 0, 0, 12, 65536, 0, 13, 65536, 0, 14, 65536, 0, 15, 65536, 0, 65535, 65536, 0, 65534, 65536, 0, 65533, 65536, 0, 65532, 65536, 0, 262141, 65536, 0, 262142, 65536, 0, 262143, 65536, 0, 196608, 0, 0, 196609, 65536, 0, 196610, 0, 0, 196611, 65536, 0, 196612, 65536, 0, 196613, 0, 0, 196614, 65536, 0, 393222, 65536, 0, 327686, 65536, 0, 327687, 0, 0, 327688, 65536, 0, 327689, 65536, 0, 327690, 65536, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 65536, 0, 589819, 0, 0, 589820, 65536, 0, 589821, 0, 0, 589822, 0, 0, 655358, 0, 0, 655371, 65536, 0, 589835, 0, 0, 589836, 65536, 0, 589837, 65536, 0, 655373, 0, 0, 655372, 65536, 0, 589834, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 65536, 0, 655365, 0, 0, 1638384, 0, 0, 1638385, 0, 0, 1638386, 0, 0, 1638387, 0, 0, 1638388, 0, 0, 1638389, 0, 0, 1638390, 0, 0, 1638391, 0, 0, 1572856, 0, 0, 1572857, 0, 0, 1572858, 0, 0, 1572859, 0, 0, 1572860, 0, 0, 1572861, 0, 0, 1572862, 0, 0, 1572863, 0, 0, 1441792, 0, 0, 1441793, 0, 0, 1441794, 0, 0, 1441795, 0, 0, 1441796, 0, 0, 1441797, 0, 0, 1441798, 0, 0, 1376263, 0, 0, 1376264, 0, 0, 1376265, 0, 0, 1376266, 0, 0, 1376267, 0, 0, 1376268, 0, 0, 1376269, 0, 0, 1376270, 0, 0, 1376271, 0, 0, 1376272, 0, 0, 1376273, 0, 0, 1376274, 0, 0, 1376275, 0, 0, 1376276, 0, 0, 1376277, 0, 0, 1376278, 0, 0, 1376279, 0, 0, 1376280, 0, 0, 1376281, 0, 0, 1376282, 0, 0, 1376283, 0, 0, 1376284, 0, 0, 1376285, 0, 0, 1376286, 0, 0, 1376287, 0, 0, 1376288, 0, 0, 1441824, 0, 0, 1441825, 0, 0, 1441826, 0, 0, 1441827, 0, 0, 1638396, 0, 0, 1638395, 0, 0, 1638394, 0, 0, 1638393, 0, 0, 1638392, 0, 0, 1638383, 65536, 0, 1638382, 65536, 0, 1638381, 65536, 0, 1638380, 65536, 0, 1638379, 65536, 0, 1638378, 65536, 0, 1638377, 65536, 0, 1638376, 65536, 0, 1638375, 65536, 0, 1638374, 65536, 0, 1638373, 65536, 0, 1638372, 65536, 0, 1638371, 65536, 0)
 
-[node name="lilBoy" type="CharacterBody2D" parent="." groups=["player"]]
-position = Vector2(11, -11)
-collision_mask = 10
-script = ExtResource("2_0pcty")
+[node name="lilBoy" parent="." instance=ExtResource("2_853je")]
 
-[node name="Camera2D" type="Camera2D" parent="lilBoy"]
-offset = Vector2(0, 50)
-zoom = Vector2(2, 2)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="lilBoy"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_1tx1y")
-
-[node name="AnimSpriteLilBoy" type="AnimatedSprite2D" parent="lilBoy"]
-sprite_frames = SubResource("SpriteFrames_rark2")
-animation = &"idle"
-frame_progress = 0.232146
+[node name="checkpoint" parent="." instance=ExtResource("3_ygxig")]
+position = Vector2(480, 328)
