@@ -29,7 +29,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sjxfj"]
-size = Vector2(2, 5)
+size = Vector2(4, 8)
 
 [node name="lilBoy" type="CharacterBody2D" groups=["player"]]
 position = Vector2(11, -11)

@@ -5,6 +5,8 @@ const SPEED:float = 200.0
 const JUMP_VELOCITY:float = -300.0
 const OUT_WALL_SPEED:float = 10.0
 const MAX_LIFE_POINT:int = 100
+const FALL_DAMAGE_SPEED_THRESHOLD:float = 350.0
+const FALL_DAMAGE_MULTIPLIER:float = 0.1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity:float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -39,9 +41,13 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+	var damages = get_fall_damages()
+	lose_life(damages)
+	
 
 	
-func _process(delta):
+func _process(_delta):
 	_animated_sprite.play("idle")
 	
 	#summon portal
@@ -56,6 +62,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("retrieve_portal"):
 		if portal != null:
 			portal.queue_free()
+	
+	
 
 func _on_collide_in_wall(body):
 	print("VERRRY STUUCK "+str(body.name))
@@ -73,7 +81,16 @@ func _on_warping():
 	
 	
 func lose_life(hurt_point:int):
-	life_point-=hurt_point
-	print("HURT !! "+str(life_point))
+	if hurt_point > 0:
+		life_point-=hurt_point
+		print("HURT !! life "+str(life_point))
 	
 
+func get_fall_damages():
+	var damages = 0
+	if get_slide_collision_count() >> 0:
+		var exec_speed = get_real_velocity().length()-FALL_DAMAGE_SPEED_THRESHOLD
+		damages = exec_speed*FALL_DAMAGE_MULTIPLIER
+	if damages > 0 :
+		print("THAT A LOT OF DAMAGES " + str(damages))
+	return damages
