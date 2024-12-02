@@ -114,6 +114,7 @@ animations = [{
 radius = 8.0
 
 [node name="wapFlowShard" type="Node2D"]
+z_index = 1
 script = ExtResource("1_mr0v6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

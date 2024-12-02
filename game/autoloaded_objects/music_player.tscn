@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj3gbnttlfalb"]
+
+[ext_resource type="AudioStream" uid="uid://bwfuwq58fekt1" path="res://assets/music/2023-03-06_-_Quantum_Leap_-_www.FesliyanStudios.com.mp3" id="1_vobao"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_vobao")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"

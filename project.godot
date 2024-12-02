@@ -22,6 +22,7 @@ buses/default_bus_layout="res://game/game_objects/default_bus_layout.tres"
 [autoload]
 
 ScoreManager="*res://game/autoloaded_objects/score_manager.tscn"
+MusicPlayer="*res://game/autoloaded_objects/music_player.tscn"
 
 [input]
 

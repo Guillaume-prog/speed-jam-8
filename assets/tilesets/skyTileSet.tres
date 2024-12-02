@@ -1,0 +1,13 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://c4dsj1pmndhl"]
+
+[ext_resource type="Texture2D" uid="uid://bsbu7dwdm3ihe" path="res://assets/images/skybox.png" id="1_xh0ye"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e58ir"]
+texture = ExtResource("1_xh0ye")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_e58ir")

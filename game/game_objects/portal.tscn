@@ -81,6 +81,7 @@ animations = [{
 }]
 
 [node name="Portal" type="Node2D" groups=["portal"]]
+z_index = 1
 script = ExtResource("1_e2g0q")
 
 [node name="entry" type="Area2D" parent="."]
