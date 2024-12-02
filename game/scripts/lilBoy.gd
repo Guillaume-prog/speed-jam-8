@@ -1,14 +1,21 @@
 extends CharacterBody2D
 
 
-const SPEED = 200.0
-const JUMP_VELOCITY = -300.0
-const OUT_WALL_SPEED = 10
+const SPEED:float = 200.0
+const JUMP_VELOCITY:float = -300.0
+const OUT_WALL_SPEED:float = 10.0
+const MAX_LIFE_POINT:int = 100
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity:float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var portal:Portal
-var is_stuck_in_wall=false
+
+
+var life_point:int = 100
+var can_heal:bool = true
+var healing_cooldown:float = 2.0
+
+
 
 
 @onready var _animated_sprite = $AnimSpriteLilBoy
@@ -32,9 +39,7 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	
-	_exit_wall_stuck(is_wall_stuck())
-	
+
 	
 func _process(delta):
 	_animated_sprite.play("idle")
@@ -43,33 +48,32 @@ func _process(delta):
 	if Input.is_action_just_pressed("create_portal"):
 		if portal != null:
 			portal.queue_free()
-		portal = Portal.summon_portal(self.position,get_viewport().get_camera_2d(),global_position)
+		portal = Portal.summon_portal(self.position,get_viewport().get_camera_2d(),self)
 		self.add_sibling(portal)
+		portal.teleported.connect(_on_warping)
+		
 	# retrieve portal
 	if Input.is_action_just_pressed("retrieve_portal"):
 		if portal != null:
 			portal.queue_free()
 
+func _on_collide_in_wall(body):
+	print("VERRRY STUUCK "+str(body.name))
+	position-=Vector2(0,OUT_WALL_SPEED)
+	lose_life(10)
+	
 
-func is_wall_stuck():
-	#prevent inside wall teleportation
-	if is_on_wall() and not is_on_floor():
-		print("STUCK")
-		return true
-	else:
-		return false
-
-
-func _exit_wall_stuck(is_wall_stuck:bool):
-	if is_wall_stuck():
-		is_stuck_in_wall = true
-		$CollisionShape2D.disabled = true
-		position-=Vector2(0,OUT_WALL_SPEED)
-
-		# TODO: add damage and healing ?
-	else :
-		is_stuck_in_wall = false
-		$CollisionShape2D.disabled = false
+func _on_warping():
+	print("WARPING")
+	if can_heal:
+		print("heal")
+		life_point = MAX_LIFE_POINT
+		can_heal = false
+		get_tree().create_timer(healing_cooldown).timeout.connect(func(): can_heal = true)
 	
 	
+func lose_life(hurt_point:int):
+	life_point-=hurt_point
+	print("HURT !! "+str(life_point))
 	
+

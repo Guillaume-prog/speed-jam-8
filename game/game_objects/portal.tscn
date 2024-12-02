@@ -139,5 +139,5 @@ animation = &"warping_trail"
 frame = 3
 frame_progress = 0.618479
 
-[connection signal="body_entered" from="entry" to="." method="_body_entered_portal"]
-[connection signal="body_entered" from="exit" to="." method="_body_entered_portal"]
+[connection signal="body_entered" from="entry" to="." method="_on_body_entered_portal"]
+[connection signal="body_entered" from="exit" to="." method="_on_body_entered_portal"]

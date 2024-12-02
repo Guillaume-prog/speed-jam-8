@@ -28,8 +28,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcd0q"]
-size = Vector2(4, 4)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjxfj"]
+size = Vector2(2, 5)
 
 [node name="lilBoy" type="CharacterBody2D" groups=["player"]]
 position = Vector2(11, -11)
@@ -50,10 +50,10 @@ animation = &"idle"
 frame_progress = 0.232146
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_kcd0q")
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_sjxfj")
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_collide_in_wall"]

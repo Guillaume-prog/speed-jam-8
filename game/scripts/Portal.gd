@@ -11,6 +11,7 @@ const _characterCenterOffset: Vector2 = Vector2(0.0,-1.0)
 var is_portal_active: bool = false
 var teleport_vector: Vector2
 
+signal teleported
 
 @onready var entry: Area2D = get_node("entry")
 @onready var exit: Area2D = get_node("exit")
@@ -28,8 +29,9 @@ func _ready():
 	is_portal_active = true
 
 
-static func summon_portal(portal_origin:Vector2,camera:Camera2D, characterPos:Vector2) -> Portal:
+static func summon_portal(portal_origin:Vector2,camera:Camera2D, character:CharacterBody2D) -> Portal:
 	var portal: Portal = _portal_scene.instantiate()
+	var characterPos = character.global_position
 	var portal_orientation = _get_portal_direction(camera, characterPos)
 	portal.position = portal_origin+_characterCenterOffset+Vector2.from_angle(portal_orientation)*portal_offset
 	portal.rotation = portal_orientation
@@ -43,7 +45,7 @@ static func _get_portal_direction(camera:Camera2D, characterPos: Vector2) -> flo
 	return mouse_orient
 
 
-func _body_entered_portal(body:Node2D):
+func _on_body_entered_portal(body:Node2D):
 	if body.position.distance_to(exit.global_position) <= 30 :
 		teleportation(body,false)
 	else :
@@ -55,6 +57,7 @@ func teleportation(body:Node2D,is_door1:bool):
 	if is_portal_active :
 		if body.get_groups().has("player") :
 			#prevent auto infinite teleportation by cooldown
+			teleported.emit()
 			is_portal_active=false
 			get_tree().create_timer(portal_cooldown).timeout.connect(func(): is_portal_active = true)
 			# teleport
