@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://dv5ne3fhcfmpq"]
+
+[ext_resource type="Texture2D" uid="uid://bii2hfocdvykg" path="res://assets/images/groundtest.png" id="1_l2kkd"]
+[ext_resource type="PackedScene" uid="uid://c32ximhtl07tv" path="res://game/game_objects/lil_boy.tscn" id="2_853je"]
+[ext_resource type="PackedScene" uid="uid://chrwqutqu3kyi" path="res://game/game_objects/checkpoint.tscn" id="3_ygxig"]
+[ext_resource type="AudioStream" uid="uid://bwfuwq58fekt1" path="res://assets/music/2023-03-06_-_Quantum_Leap_-_www.FesliyanStudios.com.mp3" id="4_6jgru"]
+[ext_resource type="PackedScene" uid="uid://rjqsap37v2v7" path="res://game/game_objects/wap_flow_shard.tscn" id="5_isnpj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvgp7"]
+resource_name = "groundtest"
+texture = ExtResource("1_l2kkd")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_gmfak"]
+uv_clipping = true
+physics_layer_0/collision_layer = 2
+sources/0 = SubResource("TileSetAtlasSource_kvgp7")
+
+[node name="Level1" type="Node2D"]
+
+[node name="Map_level" type="Node2D" parent="."]
+
+[node name="Map" type="TileMap" parent="Map_level" groups=["map"]]
+tile_set = SubResource("TileSet_gmfak")
+collision_animatable = true
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 0, 0, 3, 0, 0, 4, 65536, 0, 5, 65536, 0, 6, 65536, 0, 7, 0, 0, 8, 65536, 0, 9, 65536, 0, 10, 65536, 0, 11, 0, 0, 12, 65536, 0, 13, 65536, 0, 14, 65536, 0, 15, 65536, 0, 65535, 65536, 0, 65534, 65536, 0, 65533, 65536, 0, 65532, 65536, 0, 262141, 65536, 0, 262142, 65536, 0, 262143, 65536, 0, 196608, 0, 0, 196609, 65536, 0, 196610, 0, 0, 196611, 65536, 0, 196612, 65536, 0, 196613, 0, 0, 196614, 65536, 0, 393222, 65536, 0, 327686, 65536, 0, 327687, 0, 0, 327688, 65536, 0, 327689, 65536, 0, 327690, 65536, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 65536, 0, 589819, 0, 0, 589820, 65536, 0, 589821, 0, 0, 589822, 0, 0, 655358, 0, 0, 655371, 65536, 0, 589835, 0, 0, 589836, 65536, 0, 589837, 65536, 0, 655373, 0, 0, 655372, 65536, 0, 589834, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 65536, 0, 655365, 0, 0, 1638384, 0, 0, 1638385, 0, 0, 1638386, 0, 0, 1638387, 0, 0, 1638388, 0, 0, 1638389, 0, 0, 1638390, 0, 0, 1638391, 0, 0, 1572856, 0, 0, 1572857, 0, 0, 1572858, 0, 0, 1572859, 0, 0, 1572860, 0, 0, 1572861, 0, 0, 1572862, 0, 0, 1572863, 0, 0, 1441792, 0, 0, 1441793, 0, 0, 1441794, 0, 0, 1441795, 0, 0, 1441796, 0, 0, 1441797, 0, 0, 1441798, 0, 0, 1376263, 0, 0, 1376264, 0, 0, 1376265, 0, 0, 1376266, 0, 0, 1376267, 0, 0, 1376268, 0, 0, 1376269, 0, 0, 1376270, 0, 0, 1376271, 0, 0, 1376272, 0, 0, 1376273, 0, 0, 1376274, 0, 0, 1376275, 0, 0, 1376276, 0, 0, 1376277, 0, 0, 1376278, 0, 0, 1376279, 0, 0, 1376280, 0, 0, 1376281, 0, 0, 1376282, 0, 0, 1376283, 0, 0, 1376284, 0, 0, 1376285, 0, 0, 1376286, 0, 0, 1376287, 0, 0, 1376288, 0, 0, 1441824, 0, 0, 1441825, 0, 0, 1441826, 0, 0, 1441827, 0, 0, 1638396, 0, 0, 1638395, 0, 0, 1638394, 0, 0, 1638393, 0, 0, 1638392, 0, 0, 1638383, 65536, 0, 1638382, 65536, 0, 1638381, 65536, 0, 1638380, 65536, 0, 1638379, 65536, 0, 1638378, 65536, 0, 1638377, 65536, 0, 1638376, 65536, 0, 1638375, 65536, 0, 1638374, 65536, 0, 1638373, 65536, 0, 1638372, 65536, 0, 1638371, 65536, 0, -3, 65536, 0, -65539, 65536, 0, -131075, 65536, 0, 327695, 65536, 0, 327696, 65536, 0, 327697, 65536, 0, 327698, 65536, 0, 327702, 65536, 0, 589842, 65536, 0, 655378, 65536, 0, 720914, 65536, 0, 786450, 65536, 0, 786451, 65536, 0, 786452, 65536, 0, 655380, 65536, 0, 720916, 65536, 0, 589844, 65536, 0, -196611, 0, 0, -262147, 0, 0, -327683, 0, 0, -393219, 0, 0, -458755, 0, 0, -524291, 0, 0, -589827, 0, 0, -655363, 0, 0, -720899, 0, 0, -262148, 0, 0, -589828, 0, 0, -786435, 0, 0, -851971, 0, 0, -917507, 0, 0, -983043, 0, 0, -1048579, 0, 0, -917508, 0, 0, -196589, 0, 0, -131053, 0, 0, -131052, 0, 0, -65516, 0, 0, 20, 0, 0, -65517, 0, 0, 21, 0, 0, 22, 0, 0, -65514, 0, 0, -65515, 0, 0, -131050, 0, 0, -131051, 0, 0, -196586, 0, 0, -196587, 0, 0, -196588, 0, 0, -262125, 0, 0, -262124, 0, 0, -262123, 0, 0, -262122, 0, 0, -131054, 0, 0, -196590, 0, 0, -262126, 0, 0, -327660, 0, 0, -327659, 0, 0, -327658, 0, 0, -262121, 0, 0, -262120, 0, 0, -196584, 0, 0, -196585, 0, 0, -131049, 0, 0, -65513, 0, 0, -65512, 0, 0, -131048, 0, 0, -589788, 65536, 0, -524252, 65536, 0, -458716, 65536, 0, -393180, 65536, 0, -327644, 65536, 0, -262108, 65536, 0, -196572, 65536, 0, -131036, 65536, 0, -65500, 65536, 0, 36, 65536, 0, 65572, 65536, 0, 131108, 65536, 0, 196644, 65536, 0, 262180, 65536, 0, 327716, 65536, 0, 393252, 65536, 0, 458788, 65536, 0, 524324, 65536, 0, 589860, 65536, 0, 655396, 65536, 0, 720932, 65536, 0, 786468, 65536, 0, 852004, 65536, 0, 917540, 65536, 0, 983076, 65536, 0, 1048612, 65536, 0, 1114148, 65536, 0, 1179684, 65536, 0, 1245220, 65536, 0, 1310756, 65536, 0, 1376292, 65536, 0, 1441828, 65536, 0, -327653, 65536, 0, -458720, 65536, 0, -655324, 65536, 0, -720860, 65536, 0, -786396, 65536, 0, -851932, 65536, 0, -917468, 65536, 0, -327652, 65536, 0, -458719, 65536, 0)
+
+[node name="shards" type="Node2D" parent="Map_level/Map"]
+
+[node name="wapFlowShard1" parent="Map_level/Map/shards" instance=ExtResource("5_isnpj")]
+position = Vector2(46, -10)
+
+[node name="wapFlowShard2" parent="Map_level/Map/shards" instance=ExtResource("5_isnpj")]
+position = Vector2(1, -72)
+
+[node name="wapFlowShard3" parent="Map_level/Map/shards" instance=ExtResource("5_isnpj")]
+position = Vector2(22, 29)
+
+[node name="wapFlowShard4" parent="Map_level/Map/shards" instance=ExtResource("5_isnpj")]
+position = Vector2(214, -24)
+
+[node name="wapFlowShard5" parent="Map_level/Map/shards" instance=ExtResource("5_isnpj")]
+position = Vector2(300, -82)
+
+[node name="wapFlowShard6" parent="Map_level/Map/shards" instance=ExtResource("5_isnpj")]
+position = Vector2(278, 55)
+
+[node name="wapFlowShard7" parent="Map_level/Map/shards" instance=ExtResource("5_isnpj")]
+position = Vector2(314, 181)
+
+[node name="wapFlowShard8" parent="Map_level/Map/shards" instance=ExtResource("5_isnpj")]
+position = Vector2(-102, 341)
+
+[node name="wapFlowShard9" parent="Map_level/Map/shards" instance=ExtResource("5_isnpj")]
+position = Vector2(529, -133)
+
+[node name="lilBoy" parent="." instance=ExtResource("2_853je")]
+
+[node name="checkpoint" parent="." instance=ExtResource("3_ygxig")]
+position = Vector2(480, 328)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6jgru")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"
