@@ -1,12 +1,11 @@
 extends CharacterBody2D
 
-
 const SPEED:float = 150.0
 const JUMP_VELOCITY:float = -300.0
 const OUT_WALL_SPEED:float = 10.0
 const MAX_LIFE_POINT:int = 100
-const FALL_DAMAGE_SPEED_THRESHOLD:float = 375.0
-const FALL_DAMAGE_MULTIPLIER:float = 0.1
+const FALL_DAMAGE_SPEED_THRESHOLD:float = 300.0
+const FALL_DAMAGE_MULTIPLIER:float = 0.4
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity:float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -16,11 +15,13 @@ var portal:Portal
 var life_point:int = 100
 var can_heal:bool = true
 var healing_cooldown:float = 2.0
-
-
-
-
+@onready var last_checkpoint:Node2D = get_node("../Maps/Checkpoint")
 @onready var _animated_sprite = $AnimSpriteLilBoy
+
+func _ready():
+	ScoreManager.start_timer()
+
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -44,7 +45,8 @@ func _physics_process(delta):
 	
 	var damages = get_fall_damages()
 	lose_life(damages)
-	
+	if life_point==0:
+		die()
 
 	
 func _process(_delta):
@@ -62,6 +64,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("retrieve_portal"):
 		if portal != null:
 			portal.queue_free()
+	
 	
 	ScoreManager.add_warpflow(get_velocity().length_squared()*_delta)
 	
@@ -85,6 +88,8 @@ func _on_warping():
 func lose_life(hurt_point:int):
 	if hurt_point > 0:
 		life_point-=hurt_point
+	if life_point < 0:
+		life_point = 0
 		$AudioStreamPlayer2D.play()
 		print("HURT !! life "+str(life_point))
 	
@@ -97,3 +102,7 @@ func get_fall_damages():
 	if damages > 0 :
 		print("THAT A LOT OF DAMAGES " + str(damages))
 	return damages
+	
+func die():
+	life_point=MAX_LIFE_POINT
+	self.global_position=last_checkpoint.global_position

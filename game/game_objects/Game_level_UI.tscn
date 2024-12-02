@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://1a8qrhh6icl7"]
+
+[ext_resource type="Script" path="res://game/scenes/LifeInfo.gd" id="1_bh17r"]
+[ext_resource type="Script" path="res://game/scenes/TimePrint.gd" id="2_vleh0"]
+[ext_resource type="Script" path="res://game/scenes/Warp Flow_print.gd" id="3_q0l2t"]
+[ext_resource type="SpriteFrames" uid="uid://cno5nbvqodj0e" path="res://game/game_objects/animations/wap_flow_shard.tres" id="4_s7568"]
+[ext_resource type="Script" path="res://game/game_objects/flowAnimation.gd" id="5_qccln"]
+[ext_resource type="Script" path="res://game/game_objects/totalScore.gd" id="6_cb33n"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(9.37882, 4.51984)
+
+[node name="Panel2" type="Panel" parent="."]
+offset_left = 928.0
+offset_top = 2.0
+offset_right = 968.0
+offset_bottom = 42.0
+scale = Vector2(5.51633, 1.66653)
+
+[node name="LifeInfo" type="RichTextLabel" parent="."]
+offset_left = 943.0
+offset_top = 8.0
+offset_right = 1043.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+text = "Life"
+fit_content = true
+script = ExtResource("1_bh17r")
+
+[node name="Time" type="RichTextLabel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -568.0
+offset_top = 66.0
+offset_right = -368.0
+offset_bottom = 158.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+size_flags_horizontal = 6
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.4
+text = "Time "
+fit_content = true
+script = ExtResource("2_vleh0")
+
+[node name="Warp Flow" type="RichTextLabel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1091.0
+offset_top = 7.0
+offset_right = -891.0
+offset_bottom = 47.0
+grow_horizontal = 0
+scale = Vector2(2, 2)
+text = "Warp flow"
+script = ExtResource("3_q0l2t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(30, 29)
+scale = Vector2(3, 3)
+sprite_frames = ExtResource("4_s7568")
+animation = &"flow"
+script = ExtResource("5_qccln")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 2.0
+offset_top = 117.0
+offset_right = 202.0
+offset_bottom = 167.0
+scale = Vector2(2, 2)
+text = "Total Score"
+script = ExtResource("6_cb33n")

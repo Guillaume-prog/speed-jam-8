@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://chrwqutqu3kyi"]
+
+[ext_resource type="Texture2D" uid="uid://ciyglhxxedh1j" path="res://assets/images/checkpoint_portal.png" id="1_1l8l3"]
+[ext_resource type="Script" path="res://game/scripts/checkpoint.gd" id="1_l01hr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jco0k"]
+atlas = ExtResource("1_1l8l3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01ii4"]
+atlas = ExtResource("1_1l8l3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo0mk"]
+atlas = ExtResource("1_1l8l3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksoip"]
+atlas = ExtResource("1_1l8l3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu70p"]
+atlas = ExtResource("1_1l8l3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f73rp"]
+atlas = ExtResource("1_1l8l3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4wu2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jco0k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01ii4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo0mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksoip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu70p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f73rp")
+}],
+"loop": true,
+"name": &"portal-ing",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wtv81"]
+radius = 2.0
+height = 12.0
+
+[node name="Checkpoint" type="Area2D" groups=["portal"]]
+collision_layer = 9
+script = ExtResource("1_l01hr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c4wu2")
+animation = &"portal-ing"
+frame_progress = 0.761368
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-2, 0)
+shape = SubResource("CapsuleShape2D_wtv81")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
