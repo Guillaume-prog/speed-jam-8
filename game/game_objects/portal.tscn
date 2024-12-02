@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfihiikebo74m"]
+[gd_scene load_steps=16 format=3 uid="uid://cfihiikebo74m"]
 
 [ext_resource type="Script" path="res://game/scripts/Portal.gd" id="1_e2g0q"]
 [ext_resource type="Texture2D" uid="uid://ngnv668cs60v" path="res://assets/images/Portal.png" id="2_xb2oe"]
 [ext_resource type="Texture2D" uid="uid://d3twujqw8kpue" path="res://assets/images/Portal-trail.png" id="3_av0ad"]
+[ext_resource type="AudioStream" uid="uid://bxegpykw7uaek" path="res://assets/sounds/Portal_sound.wav" id="4_2un8p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iedex"]
 size = Vector2(3, 16)
@@ -79,7 +80,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Portal" type="Node2D"]
+[node name="Portal" type="Node2D" groups=["portal"]]
 script = ExtResource("1_e2g0q")
 
 [node name="entry" type="Area2D" parent="."]
@@ -138,6 +139,10 @@ sprite_frames = SubResource("SpriteFrames_pq2ev")
 animation = &"warping_trail"
 frame = 3
 frame_progress = 0.618479
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_2un8p")
+bus = &"Effects"
 
 [connection signal="body_entered" from="entry" to="." method="_on_body_entered_portal"]
 [connection signal="body_entered" from="exit" to="." method="_on_body_entered_portal"]

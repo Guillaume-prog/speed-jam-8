@@ -58,6 +58,8 @@ func teleportation(body:Node2D,is_door1:bool):
 		if body.get_groups().has("player") :
 			#prevent auto infinite teleportation by cooldown
 			teleported.emit()
+			$AudioStreamPlayer2D.play()
+			ScoreManager.add_portal_warpflow()
 			is_portal_active=false
 			get_tree().create_timer(portal_cooldown).timeout.connect(func(): is_portal_active = true)
 			# teleport

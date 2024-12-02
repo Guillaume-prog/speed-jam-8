@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c32ximhtl07tv"]
+[gd_scene load_steps=9 format=3 uid="uid://c32ximhtl07tv"]
 
 [ext_resource type="Script" path="res://game/scripts/lilBoy.gd" id="1_maqm0"]
 [ext_resource type="Texture2D" uid="uid://setvj767ovxe" path="res://assets/images/Player.png" id="2_1ki4u"]
+[ext_resource type="AudioStream" uid="uid://0xud3f00rtav" path="res://assets/sounds/hurt_sound.wav" id="3_05f7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpsjj"]
 size = Vector2(10, 15)
@@ -57,5 +58,13 @@ collision_mask = 2
 visible = false
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_sjxfj")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_05f7g")
+volume_db = 3.0
+bus = &"Effects"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_collide_in_wall"]

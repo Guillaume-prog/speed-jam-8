@@ -15,6 +15,14 @@ run/main_scene="res://menus/scenes/splash-menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://game/game_objects/default_bus_layout.tres"
+
+[autoload]
+
+ScoreManager="*res://game/autoloaded_objects/score_manager.tscn"
+
 [input]
 
 move_right={

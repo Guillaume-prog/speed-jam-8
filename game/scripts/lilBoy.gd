@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 
-const SPEED:float = 200.0
+const SPEED:float = 150.0
 const JUMP_VELOCITY:float = -300.0
 const OUT_WALL_SPEED:float = 10.0
 const MAX_LIFE_POINT:int = 100
-const FALL_DAMAGE_SPEED_THRESHOLD:float = 350.0
+const FALL_DAMAGE_SPEED_THRESHOLD:float = 375.0
 const FALL_DAMAGE_MULTIPLIER:float = 0.1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -63,6 +63,8 @@ func _process(_delta):
 		if portal != null:
 			portal.queue_free()
 	
+	ScoreManager.add_warpflow(get_velocity().length_squared()*_delta)
+	
 	
 
 func _on_collide_in_wall(body):
@@ -83,12 +85,13 @@ func _on_warping():
 func lose_life(hurt_point:int):
 	if hurt_point > 0:
 		life_point-=hurt_point
+		$AudioStreamPlayer2D.play()
 		print("HURT !! life "+str(life_point))
 	
 
 func get_fall_damages():
 	var damages = 0
-	if get_slide_collision_count() >> 0:
+	if get_slide_collision_count() >> 0 and is_on_floor():
 		var exec_speed = get_real_velocity().length()-FALL_DAMAGE_SPEED_THRESHOLD
 		damages = exec_speed*FALL_DAMAGE_MULTIPLIER
 	if damages > 0 :
