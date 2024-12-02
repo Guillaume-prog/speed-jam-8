@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dv5ne3fhcfmpq"]
+[gd_scene load_steps=7 format=3 uid="uid://dv5ne3fhcfmpq"]
 
-[ext_resource type="Texture2D" uid="uid://bii2hfocdvykg" path="res://assets/groundtest.png" id="1_l2kkd"]
+[ext_resource type="Texture2D" uid="uid://bii2hfocdvykg" path="res://assets/images/groundtest.png" id="1_l2kkd"]
 [ext_resource type="PackedScene" uid="uid://c32ximhtl07tv" path="res://game/game_objects/lil_boy.tscn" id="2_853je"]
 [ext_resource type="PackedScene" uid="uid://chrwqutqu3kyi" path="res://game/game_objects/checkpoint.tscn" id="3_ygxig"]
+[ext_resource type="AudioStream" uid="uid://bwfuwq58fekt1" path="res://assets/music/2023-03-06_-_Quantum_Leap_-_www.FesliyanStudios.com.mp3" id="4_6jgru"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kvgp7"]
 resource_name = "groundtest"
@@ -33,3 +34,8 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 1, 65536, 0, 2, 0, 0, 3, 0, 0, 4, 
 
 [node name="checkpoint" parent="." instance=ExtResource("3_ygxig")]
 position = Vector2(480, 328)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6jgru")
+autoplay = true
+bus = &"Music"

@@ -1,26 +1,26 @@
 [gd_scene load_steps=15 format=3 uid="uid://cfihiikebo74m"]
 
 [ext_resource type="Script" path="res://game/scripts/Portal.gd" id="1_e2g0q"]
-[ext_resource type="Texture2D" uid="uid://ngnv668cs60v" path="res://assets/Portal.png" id="2_s513p"]
-[ext_resource type="Texture2D" uid="uid://d3twujqw8kpue" path="res://assets/Portal-trail.png" id="3_df3dt"]
+[ext_resource type="Texture2D" uid="uid://ngnv668cs60v" path="res://assets/images/Portal.png" id="2_xb2oe"]
+[ext_resource type="Texture2D" uid="uid://d3twujqw8kpue" path="res://assets/images/Portal-trail.png" id="3_av0ad"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iedex"]
 size = Vector2(3, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olnhy"]
-atlas = ExtResource("2_s513p")
+atlas = ExtResource("2_xb2oe")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2pubg"]
-atlas = ExtResource("2_s513p")
+atlas = ExtResource("2_xb2oe")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwu4g"]
-atlas = ExtResource("2_s513p")
+atlas = ExtResource("2_xb2oe")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rquvb"]
-atlas = ExtResource("2_s513p")
+atlas = ExtResource("2_xb2oe")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i1j23"]
@@ -44,19 +44,19 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gna8l"]
-atlas = ExtResource("3_df3dt")
+atlas = ExtResource("3_av0ad")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4idp2"]
-atlas = ExtResource("3_df3dt")
+atlas = ExtResource("3_av0ad")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_engbp"]
-atlas = ExtResource("3_df3dt")
+atlas = ExtResource("3_av0ad")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pv30t"]
-atlas = ExtResource("3_df3dt")
+atlas = ExtResource("3_av0ad")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pq2ev"]

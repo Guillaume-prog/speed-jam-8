@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c32ximhtl07tv"]
 
 [ext_resource type="Script" path="res://game/scripts/lilBoy.gd" id="1_maqm0"]
-[ext_resource type="Texture2D" uid="uid://setvj767ovxe" path="res://assets/Player.png" id="2_1ki4u"]
+[ext_resource type="Texture2D" uid="uid://setvj767ovxe" path="res://assets/images/Player.png" id="2_1ki4u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpsjj"]
 size = Vector2(10, 15)
@@ -41,6 +41,7 @@ offset = Vector2(0, 50)
 zoom = Vector2(3, 3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_rpsjj")
 
@@ -53,6 +54,7 @@ frame_progress = 0.232146
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_sjxfj")
 
